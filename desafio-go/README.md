@@ -18,7 +18,7 @@ A imagem está disponibilizada [no DockerHub](https://hub.docker.com/repository/
 docker run thainarafurforo/desafio-go
 ```
 
-O tamanho total da imagem é 2.13MB.
+O tamanho total da imagem é 1.24MB.
 
 Ao rodar a imagem irá ser printado no terminal a mensagem "Full Cycle Rocks!!".
 
