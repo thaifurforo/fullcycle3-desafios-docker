@@ -1,0 +1,58 @@
+services:
+
+  app:
+    build:
+      context: node
+    container_name: app
+    entrypoint: docker-entrypoint.sh
+    command: "npm install && npm start"
+    networks:
+      - node-network
+    volumes:
+      - ./node:/usr/src/app
+    tty: true
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "3000:3000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/"]
+      interval: 10s
+      retries: 5
+
+  db:
+    image: mysql:5.7
+    command: --innodb-use-native-aio=0
+    container_name: db
+    restart: always
+    tty: true
+    volumes:
+      - ./mysql:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=nodedb
+      - MYSQL_ROOT_PASSWORD=root
+    networks:
+    - node-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-proot"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+  nginx:
+    build:
+      context: ./nginx
+    container_name: nginx
+    networks:
+      - node-network
+    ports:
+      - "8080:80"
+    # depends_on:
+    #   app:
+    #     condition: service_healthy
+
+networks:
+  node-network:
+    driver: bridge
