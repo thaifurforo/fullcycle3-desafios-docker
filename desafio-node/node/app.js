@@ -10,6 +10,14 @@ const config = {
 const mysql = require('mysql')
 const connection = mysql.createConnection(config)
 
+const createTable = `
+    CREATE TABLE IF NOT EXISTS people (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(255) NOT NULL
+    );
+`;
+connection.query(createTable);
+
 const sql = `INSERT INTO people(name) values('Thainara')`
 connection.query(sql)
 
