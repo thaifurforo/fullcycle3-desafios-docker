@@ -18,7 +18,7 @@ A imagem está disponibilizada [no DockerHub](https://hub.docker.com/repository/
 docker run thainarafurforo/desafio-go
 ```
 
-O tamanho total da imagem é 1.24MB.
+O tamanho total da imagem é 1.38MB.
 
 Ao rodar a imagem irá ser printado no terminal a mensagem "Full Cycle Rocks!!".
 
@@ -28,3 +28,4 @@ Além das aulas do FullCycle, foram usados como referência para este desafio:
 - [[Docker] Go language-specific guide](https://docs.docker.com/guides/golang/build-images/)
 - [[Golang] Tutorial: Get started with Go](https://go.dev/doc/tutorial/getting-started)
 - [[Aprenda Golang] Como fazer uma imagem Docker com multi stage build](https://aprendagolang.com.br/como-fazer-uma-imagem-docker-otimizada-com-multi-stage-build/)
+- [[Medium] Dockerizing Golang Apps: A Step-by-Step Guide to Reducing Docker Image Size](https://medium.com/code-beyond/dockerizing-golang-apps-a-step-by-step-guide-to-reducing-docker-image-size-306898e7359e)

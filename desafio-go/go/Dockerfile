@@ -1,10 +1,10 @@
-FROM golang:1.23.5 AS build
+FROM golang:1.23.5-alpine AS build
 
 WORKDIR /app
 
 COPY . .
 
-RUN CGO_ENABLED=0 GOOS=linux go build -o go-app main.go
+RUN CGO_ENABLED=0 GOOS=linux go build -ldflags "-s -w" -o go-app main.go
 
 FROM scratch
 
